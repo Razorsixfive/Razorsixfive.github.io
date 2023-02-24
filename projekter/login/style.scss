@@ -1,0 +1,189 @@
+// Variables
+$breakpoint-wide: 40em;
+$border-radius: 2.25rem;
+
+:root {
+  --gray-light: #f0f0f0;
+  --gray-mid: #757575;
+  --gray-dark: #4c4c4c;
+}
+
+
+// Download styling
+a[download] {
+  color: #1e90ff;
+  font-weight: 700;
+  font-size: 1.25em;
+  
+  // States
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+
+
+
+// Additional page styling
+body {
+  background-color: #1CB0F6;
+  color: var(--gray-dark);
+  font-family: "Nunito", sans-serif;
+}
+
+main {
+  background: #ffffff url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/11907/download-icon-information.svg) no-repeat top 1.5rem left 2rem;
+  border-radius: $border-radius;
+  box-shadow: 0 0.625rem 3.75rem -1.875rem rgba(0, 0, 0, 1);
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  padding: 2rem;
+  width: 70vw;
+  position: absolute;
+   top: 50%;
+   left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  // Pseduo
+  &::after {
+    border-radius: $border-radius;
+    box-shadow: 0 0.625rem 3.125rem -1.875rem rgba(0, 0, 0, 0.95);
+    content: "";
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+     top: 0;
+     left: 0;
+    width: 100%;
+    z-index: -1;
+    transition: opacity 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  // States
+  // Creates a jankless box-shadow animation
+  &:hover::after {
+    opacity: 1;
+  }
+}
+
+img {
+  display: none;
+  
+  @media screen and (min-width: $breakpoint-wide) {
+    align-self: center;
+    display: block;
+    height: auto;
+    margin-left: -1rem;
+    margin-right: 1.25rem;
+    padding-top: 1rem;
+    width: 40%;
+  }
+}
+
+h1,
+h2 {
+  margin: 0;
+}
+
+h1 {
+  color: var(--gray-mid);
+  font-size: 1em;
+  letter-spacing: 0.05em;
+  margin-left: 2rem;
+  position: absolute;
+   top: 1.6rem;
+}
+
+h2 {
+  margin-bottom: 0.75rem;
+}
+
+p {
+  color: #3e3e3e;
+  margin: 0;
+}
+
+small {
+  font-size: 1em;
+}
+
+.notification {
+  border-top: 2px solid var(--gray-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 1.5rem;
+  padding: 1.25rem 0 0 0;
+
+  // Media Queries
+  @media screen and (min-width: $breakpoint-wide) {
+    border: 2px solid var(--gray-light);
+    border-radius: 1.25rem;
+    margin-top: 1rem;
+    padding: 1.25rem;
+  }
+
+  &__instructions {
+    margin-top: 0.5em;
+  }
+  
+  &__update-details {
+    color: var(--gray-mid);
+    line-height: 1.4;
+    margin-top: 1.5em;
+  }
+}
+
+
+.toggletip {
+  &-container {
+    display: inline-block;
+    font-size: 85%;
+    position: relative;
+
+    // `type="button"` prevents page from trying to submit form data
+    button[type="button"] {
+      background-color: var(--gray-light);
+      border: none;
+      border-radius: 0.25em;
+      cursor: pointer;
+      padding: 0.25em 0.5em;
+    
+      // States
+      &:focus,
+      &:active {
+        color: var(--gray-mid);
+      }
+    }
+  }
+
+  &-bubble {
+    background-color: var(--gray-dark);
+    border-radius: 0.2em;
+    color: #ffffff;
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.6rem 1rem;
+    position: absolute;
+     top: 1rem;
+     left: -4rem;
+    width: 17rem;
+    z-index: 1;
+
+    &::after {
+      border-left: 0.5rem solid transparent;
+      border-right: 0.5rem solid transparent;
+      border-bottom: 0.5rem solid var(--gray-dark);
+      content: "";
+      display: block;
+      height: 0; 
+      position: absolute;
+       top: -12%;
+       left: 45%;
+      width: 0; 
+    }
+  }
+}
